@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "relevai"
+version = "0.1.1"
+description = "Python SDK client for RelevAI API"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "RELEVAI, S.L.", email = "info@relev.ai" }
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Libraries",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent"
+]
+
+dependencies = [
+  "loguru==0.7.3",
+  "lz4==4.4.3",
+  "joblib==1.4.2",
+  "pydantic-settings==2.9.1",
+  "pydantic>=2.0",
+  "msgpack==1.1.1",
+  "ollama==0.4.8"
+]
+
+[project.urls]
+Homepage = "https://github.com/relev-ai/python-relevai"
+Documentation = "https://github.com/relev-ai/python-relevai#readme"
+Source = "https://github.com/relev-ai/python-relevai"
+Issues = "https://github.com/relev-ai/python-relevai/issues"

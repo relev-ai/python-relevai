@@ -1,0 +1,83 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# pyproject build cache
+.cache/
+*.wheel
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Pytest
+htmlcov/
+.coverage
+coverage.xml
+.cache/
+.tox/
+.nox/
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
+
+# VS Code
+.vscode/
+.history/
+
+# IDEs
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Testing output
+test-results/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# dotenv
+.env
+.env.*
+
+# Local overrides
+local_settings.py
+
+# Serialization test output
+*.msgpack
+*.lz4
+
+# Ollama or other LLM caches (if any)
+ollama_cache/
+
+# Generated docs
+docs/_build/

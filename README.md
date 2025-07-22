@@ -1,8 +1,11 @@
 # RelevAI Python SDK
 
-**Python SDK for accessing RelevAI's AI Lang services with secure token management.**
+**Helper SDK to simplify access and integration with RelevAI's AI services.**
 
-This library provides an easy-to-use interface for interacting with RelevAI's APIs, including automatic token renewal via `ClientKey` and `ServiceKey`, and flexible serialization strategies.
+This library offers a lightweight, developer-friendly interface for authenticating and interacting with RelevAI’s API endpoints.  
+It includes automatic token management (`ClientKey` / `ServiceKey`), sync/async client support, and flexible serialization strategies.
+
+While not required to use RelevAI’s APIs, this SDK is designed to reduce boilerplate and speed up development.
 
 ---
 
@@ -11,7 +14,7 @@ This library provides an easy-to-use interface for interacting with RelevAI's AP
 - Secure authentication with RelevAI services using OAuth2 tokens
 - Automatic token renewal in the background
 - Synchronous and asynchronous clients
-- Built-in support for RelevAI AI-Lang features like `chat` and `embed`
+- Built-in support for RelevAI AI-Lang services (`chat`, `embed`)
 - Pluggable serialization system (`JSON`, `LZ4`, `MsgPack`)
 
 ---
@@ -19,7 +22,7 @@ This library provides an easy-to-use interface for interacting with RelevAI's AP
 ## Installation
 
 ```bash
-pip install rundock
+pip install relevai
 ````
 
 > Requires Python **3.9+**
@@ -44,7 +47,6 @@ key = ClientKey(
 
 client = AILangClient(key)
 response = client.chat(model="llm-model", messages=[{"role": "user", "content": "Hello!"}])
-print(response)
 ```
 
 ---
@@ -67,7 +69,6 @@ async def main():
 
     client = AILangAsyncClient(key)
     response = await client.chat(model="relevai/ai-lang", messages=[{"role": "user", "content": "Hi!"}])
-    print(response)
 
 asyncio.run(main())
 ```
@@ -76,13 +77,18 @@ asyncio.run(main())
 
 ## Serialization
 
-Built-in serializers:
+This SDK includes a simple serialization interface with multiple backends:
 
-* `JSONSerializer`
-* `LZ4Serializer` (requires `joblib`)
-* `MsgPackSerializer` (requires `msgpack`)
+* JSONSerializer (default)
+* LZ4Serializer (requires joblib)
+* MsgPackSerializer (requires msgpack)
 
-All serializers support both `dumps()` (base64 string) and `dump()` (raw bytes):
+Each serializer supports:
+
+* dumps() / loads() — base64 string encoding
+* dump() / load() — raw bytes
+
+### Example: 
 
 ```python
 from relevai.serializers import JSONSerializer
@@ -90,24 +96,8 @@ from relevai.serializers import JSONSerializer
 serializer = JSONSerializer()
 data = {"key": "value"}
 
-s = await serializer.dumps(data)
-obj = await serializer.loads(s)
-```
-
----
-
-## Testing
-
-You can mock token behavior or run integration tests by injecting a fake token or using `ServiceKey` for automation:
-
-```python
-from relevai.key import ServiceKey
-
-key = ServiceKey(
-    client_id="your_client_id",
-    client_secret="your_client_secret",
-    auth_url="https://auth.relev.ai/token"
-)
+encoded = await serializer.dumps(data)
+decoded = await serializer.loads(encoded)
 ```
 
 ---
@@ -120,5 +110,4 @@ key = ServiceKey(
 
 ## Links
 
-* [Documentation](https://github.com/relev-ai/rundock-server)
-* [RelevAI](https://relev.ai)
+* [RelevAI official webpage](https://relev.ai)
